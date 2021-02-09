@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cum e vremea.ro</title>
+    <link rel="stylesheet" href="styleAbout.css">
+    <script type = "text/javascript" src="javaScript.js"></script>
+
+    <!---- <script type = "text/javascript" src="fullscreenvideo.js"></script> -->
+</head>
+<body>
+    
+    <div class="webpage">
+
+        <header>
+            <div id="todaysDate" class="hour"></div>
+            <a class="about" href="http://cumevremea.ro/">Cumevremea</a>
+        </header>
+
+        <div class="transparent-bar-1"></div>
+        
+
+        <main>
+            <h1>Cum funcționează?</h1>
+            <p>Site-ul este implementat folosind limbajele HTML, CSS si JavaScript</p>
+            <p>Acesta este aflat pe o mașină virtuală cu Windows Server 2016 deținută de <a class="lnk" href="https://azure.microsoft.com/en-us/">Microsoft Azure</a> , studenții beneficiind de servicii de hosting în valoare de 100 de euro ce pot fi utilizate în decursul unui an de la înregistrare .</p>
+            <p>Videoclipurile sunt preluate folosind streamuri IPTV, printr-un task de înregistrare folosind <a class="lnk" href="https://ffmpeg.org/">FFMPEG</a> task care se execută zilnic, L-V la ora 20:20 și S-D la ora 19:50, în funcție de programul de rulare a stirilor meteo de la televior. </p>
+            <p>După ce se înregistrează câte 10 minute din canalele TV, se execută <a class="lnk" href="https://github.com/craigfrancis/audio-detect">următorul program</a> scris în Python pentru a identifica unde începe și unde se termină prognoza meteo. Programul de asemenea apelează FFMPEG pentru tăierea în sine, apoi la final plasează rezultatul în folderul de videoclipuri destinat canalului respectiv</p>
+
+            <h1>De ce acest proiect?</h1>
+            <p>Am dorit să vin în ajutorul persoanelor cărora singura sursă de încredere în a afla vremea în zilele următoare este Busu de la ProTV și care din diferite motive nu au putut fi la televizor la momentul potrivit. Pe parcurs am adăugat si Antena 1 deoarece interesul pentru programul meteo de la acest post este la fel de mare ca la ProTV. </p>
+
+            <p>Site-ul de asemenea reprezintă <a class="diploma">proiectul de diplomă</a> pentru absolvirea <a class="lnk" href="https://ac.tuiasi.ro/">Facultății de Automatică și Calculatoare din Iași.</a> </p>
+            
+        </main>
+      
+        <footer>
+            
+        </footer>
+
+    </div>
+
+
+</body>
+</html>

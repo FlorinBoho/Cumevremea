@@ -1,0 +1,130 @@
+html{
+    margin:0;
+    height: 100%;
+    overflow: auto;
+}
+body { 
+    min-height: 100vh;
+    overflow: auto;
+
+
+    background-image: url(/images/background.jpg);
+    background-position: top right; 
+    background-repeat: no-repeat; 
+    background-attachment:fixed;
+
+    -webkit-background-size: 100%;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.webpage {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -10px;
+    width: auto;
+    
+}
+
+header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    overflow: hidden;
+    background-color: red;
+}
+
+
+.about {
+    float: right;
+    size: 20px;
+    color: white;
+
+}
+
+.hour {
+    float: left;
+    
+    color:white;
+}
+
+main .cumevremealogo {
+    padding-top: 50px;
+    text-align: center;
+}
+
+main {
+    background-color: rgba(0, 0, 0, 0.514);
+    padding-top: 10px;
+    padding-bottom: 100px;
+    margin-left: 10%; /* 100px */
+    margin-right: 10%;
+}
+
+main img {
+    padding-top: 50px;
+    padding-left: 5%;
+    width: 117px;
+    height: 38px;
+}
+
+.boxContainer {
+    margin-top: 50px;
+
+    /*padding-left: 20px;*/
+    /*padding-right: 20px;*/
+    background-color: cornflowerblue;
+    /*width: auto;*/
+    width: 50%;
+    height: 350px;
+
+    text-align: center;
+    position: relative;
+
+    
+    width: 100%;
+
+}
+
+.date {
+    text-align: center;
+    width: 220px 14%;
+    background-color: turquoise;
+    position: relative;
+    
+}
+
+.box {
+    border: 1px solid red; 
+    text-align: center;
+    /*width: 20%;*/
+    max-width: 150px; 
+    min-width: 219px;
+    
+    height: 75%;
+    
+    overflow: hidden;
+
+    float: left;
+    position: relative;
+    
+    background-color: orchid;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 2%;
+    margin-right: 2%;
+
+    
+}
+
+.protv-video {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+
+    padding-left: 4%;
+    padding-right: 4%;
+    
+}
