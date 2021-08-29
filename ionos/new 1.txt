@@ -1,0 +1,98 @@
+import sys
+import os
+import glob
+import subprocess
+import schedule
+import time
+from datetime import datetime
+import shutil
+from subprocess import Popen, PIPE, STDOUT
+
+ffmpeg_path='ffmpeg'
+
+#exec(open(os.path.dirname(os.path.realpath(__file__)) + '/process.py').read())
+
+def job(t):
+    print("I'm working...", t, " ", channel)
+    return
+
+def intermediary():
+    now = datetime.now() # current date and time
+    year = now.strftime("%Y")
+    month = now.strftime("%m")
+    day = now.strftime("%d")
+    
+    videoPath = "./input_videos/" + channel + "." + day + "." + month + "." + year + ".mp4"
+    logPath = "./logs/" + channel + "." + day + "." + month + "." + year + ".log"
+
+    sys.stdout = open(logPath, 'w')
+    sys.stderr = sys.stdout
+	
+    print("Entering one time intermediary()")
+    p = subprocess.Popen([ffmpeg_path, '-nostdin', '-i', stream, '-acodec', 'copy', '-vcodec', 'copy', '-t', '600', videoPath], stdout=sys.stdout, stderr=STDOUT, bufsize=1)
+    if p.wait() != 0:
+        print("There was an error")
+
+    writeOutputVideos(videoPath,"../public_html/videos/" + channel.lower() + "/1.mp4")
+
+
+
+def writeOutputVideos(vPath,p1):
+    print('Entering writeOutputVideos()')
+    if not os.path.exists(vPath): #if no video was recorded and if no-video.mp4 doesnt exist.
+        print('Missing no-video-recorded/final output file file')
+    else:
+        p2=p1[:-5]+'2.mp4'
+        p3=p1[:-5]+'3.mp4'
+        p4=p1[:-5]+'4.mp4'
+        p5=p1[:-5]+'5.mp4'
+        print('Adding last video to the server')   
+        if not os.path.exists(p1[:-5]):
+            os.makedirs(p1[:-5])
+        if os.path.exists(p5):
+            os.remove(p5)
+        if os.path.exists(p4):
+            os.rename(p4,p4[:-5]+'5.mp4')
+        if os.path.exists(p3):
+            os.rename(p3,p3[:-5]+'4.mp4')
+        if os.path.exists(p2):
+            os.rename(p2,p2[:-5]+'3.mp4')
+        if os.path.exists(p1):
+            os.rename(p1,p1[:-5]+'2.mp4')    
+        shutil.copyfile(vPath,p1)
+    return 0
+    
+schedule.every().monday.at("19:20").do(intermediary)
+schedule.every().tuesday.at("19:20").do(intermediary)
+schedule.every().wednesday.at("19:20").do(intermediary)
+schedule.every().thursday.at("19:20").do(intermediary)
+schedule.every().friday.at("19:20").do(intermediary)
+
+schedule.every().saturday.at("18:50").do(intermediary)
+schedule.every().sunday.at("18:50").do(intermediary)
+
+schedule.every(60).seconds.do(job,"60 seconds")
+
+stream = sys.argv[1]
+channel = sys.argv[2]
+
+
+now = datetime.now() # current date and time
+year = now.strftime("%Y")
+month = now.strftime("%m")
+day = now.strftime("%d")
+
+logPath = "./logs/" + channel + "." + day + "." + month + "." + year + ".log"
+sys.stdout = open(logPath, 'w')
+sys.stderr = sys.stdout
+
+
+#intermediary()
+
+while True:
+    schedule.run_pending()
+    sys.stdout.flush()
+    time.sleep(10) # wait one minute
+
+
+
